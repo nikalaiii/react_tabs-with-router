@@ -1,12 +1,14 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
 
-import { Link, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
-import { Tabs } from './components/Tabs';
+import { NavLink, Outlet } from 'react-router-dom';
+import classNames from 'classnames';
 
 export const App = () => {
-  const location = useLocation();
-  const isActive = (path: string) => location.pathname === path;
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames('navbar-item', {
+      'is-active': isActive,
+    });
 
   return (
     <>
@@ -16,18 +18,12 @@ export const App = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link
-              to="/"
-              className={`navbar-item ${isActive('/') ? 'is-active' : ''}`}
-            >
+            <NavLink to="/" className={getLinkClass}>
               Home
-            </Link>
-            <Link
-              to="/tabs"
-              className={`navbar-item ${isActive('/tabs') ? 'is-active' : ''}`}
-            >
+            </NavLink>
+            <NavLink to="/tabs" className={getLinkClass}>
               Tabs
-            </Link>
+            </NavLink>
           </div>
         </div>
       </nav>
