@@ -19,7 +19,7 @@ export const Tabs = () => {
         <ul>
           {tabs.map(tab => (
             <li key={tab.id} data-cy="Tab">
-              <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
+              <Link to={`${tab.id}`}>{tab.title}</Link>
             </li>
           ))}
         </ul>
